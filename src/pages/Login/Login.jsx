@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './style.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,9 +17,20 @@ const Login = () => {
     }
   }, [email, password]);
 
+  const handleClick = () => {
+    const saveUserLocalStorage = {
+      email,
+    };
+
+    localStorage.setItem('user', JSON.stringify(saveUserLocalStorage));
+    localStorage.setItem('mealsToken', '1');
+    localStorage.setItem('cocktailsToken', '1');
+  };
+
   return (
     <div className="Login">
       <label htmlFor="email">
+        Usuário
         <input
           id="email"
           type="text"
@@ -28,6 +40,7 @@ const Login = () => {
         />
       </label>
       <label htmlFor="password">
+        Senha
         <input
           id="password"
           type="password"
@@ -40,7 +53,7 @@ const Login = () => {
         type="button"
         data-testid="login-submit-btn"
         disabled={ !isDisable }
-        onClick={ () => {} }
+        onClick={ handleClick }
       >
         Login
       </button>

@@ -1,0 +1,34 @@
+.Login {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
+  justify-content: center;
+  padding: 0 10%;
+}
+
+.Login label {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+
+}
+
+.Login label input {
+  border: solid 1px black;
+  border-radius: 8px;
+  padding: 2px 4px;
+
+}
+
+.Login button {
+  align-self: center;
+  border-radius: 16px;
+  width: 50%;
+
+}
+
