@@ -12,8 +12,6 @@ describe('Testes da Tela de Login', () => {
     userEvent.type(inputEmail, 'teste@testando.com');
     userEvent.type(inputPassword, '1234567')
     const buttonLogin = screen.getByTestId("login-submit-btn")
-    userEvent.click(buttonLogin)
-    // console.log(screen.logTestingPlaygroundURL());
     expect(submitButton).toBeEnabled();
   })
 
