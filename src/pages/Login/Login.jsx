@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './style.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isDisable, setIsDisable] = useState(false);
+  const history = useHistory();
 
   const validateEmail = () => /\S+@\S+\.\S+/.test(email);
   const validatePassword = password.length > +'6';
@@ -25,6 +27,8 @@ const Login = () => {
     localStorage.setItem('user', JSON.stringify(saveUserLocalStorage));
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
+
+    history.push('/foods');
   };
 
   return (
