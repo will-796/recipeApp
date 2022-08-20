@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Context from '../../context';
 import './style.css';
 
 const Login = () => {
+  const { setShowHeader } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isDisable, setIsDisable] = useState(false);
@@ -10,6 +12,14 @@ const Login = () => {
 
   const validateEmail = () => /\S+@\S+\.\S+/.test(email);
   const validatePassword = password.length > +'6';
+
+  useEffect(() => {
+    setShowHeader({
+      showName: false,
+      showSearch: false,
+      showProfile: false,
+    });
+  }, []);
 
   useEffect(() => {
     if (validateEmail() && validatePassword) {
