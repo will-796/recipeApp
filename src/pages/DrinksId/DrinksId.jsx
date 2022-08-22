@@ -1,20 +1,20 @@
 import React, { useContext, useEffect } from 'react';
 import Context from '../../context';
 
-function Recipes() {
-  const { setShowFooter, setPageName, setShowHeader } = useContext(Context);
+function Drinks() {
+  const { setPageName, setShowHeader } = useContext(Context);
   useEffect(() => {
     setShowHeader({
       showName: true,
       showSearch: true,
       showProfile: true,
     });
-    setShowFooter(true);
-    setPageName('Foods');
+    setPageName('Drinks');
   }, []);
 
   return (
-    <div>To com fome</div>);
+    <div>To com sede</div>
+  );
 }
 
-export default Recipes;
+export default Drinks;

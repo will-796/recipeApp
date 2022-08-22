@@ -9,6 +9,7 @@ const Provider = ({ children }) => {
     showProfile: false,
   });
   const [pageName, setPageName] = useState('');
+  const [showFooter, setShowFooter] = useState(false);
   const [apiData, setApiData] = useState([]);
 
   const contextValue = {
@@ -16,6 +17,8 @@ const Provider = ({ children }) => {
     setShowHeader,
     pageName,
     setPageName,
+    showFooter,
+    setShowFooter,
     apiData,
     setApiData,
   };
