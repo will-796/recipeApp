@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div>
       {showFooter && (
-        <footer id="footer" data-testid="footer">
+        <footer className="footer" data-testid="footer">
           <a href="/drinks">
             <img
               data-testid="drinks-bottom-btn"
