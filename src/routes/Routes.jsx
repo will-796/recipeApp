@@ -6,6 +6,7 @@ import Drinks from '../pages/Drinks/Drinks';
 import Profile from '../pages/Profile/Profile';
 import DoneRecipes from '../pages/DoneRecipes/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
+import Header from '../components/Header';
 import FoodsId from '../pages/FoodsId/FoodsId';
 import DrinksId from '../pages/DrinksId/DrinksId';
 import FoodsInProgress from '../pages/FoodsInProgress/FoodsInProgress';
@@ -13,6 +14,7 @@ import DrinksInProgress from '../pages/DrinksInProgress/DrinksInProgress';
 
 const Routes = () => (
   <BrowserRouter>
+    <Header />
     <Switch>
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Foods } />
