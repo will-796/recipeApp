@@ -22,6 +22,7 @@ function Profile() {
     localStorage.clear();
     history.push('/');
   };
+  // Ola
 
   return (
     <div>
