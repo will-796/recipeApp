@@ -7,25 +7,27 @@ import Profile from '../pages/Profile/Profile';
 import DoneRecipes from '../pages/DoneRecipes/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
 import Header from '../components/Header';
+import FoodsId from '../pages/FoodsId/FoodsId';
+import DrinksId from '../pages/DrinksId/DrinksId';
+import FoodsInProgress from '../pages/FoodsInProgress/FoodsInProgress';
+import DrinksInProgress from '../pages/DrinksInProgress/DrinksInProgress';
 
 const Routes = () => (
-  <div>
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route exact path="/foods" component={ Foods } />
-        <Route exact path="/drinks" component={ Drinks } />
-        <Route exact path="foods/:id" component={ Foods } />
-        <Route exact path="drinks/:id" component={ Drinks } />
-        <Route exact path="/foods/:id/in-progress" component={ Foods } />
-        <Route exact path="/drinks/:id/in-progress" component={ Drinks } />
-        <Route exact path="/profile" component={ Profile } />
-        <Route exact path="/done-recipes" component={ DoneRecipes } />
-        <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
-      </Switch>
-    </BrowserRouter>
-  </div>
+  <BrowserRouter>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={ Login } />
+      <Route exact path="/foods" component={ Foods } />
+      <Route exact path="/drinks" component={ Drinks } />
+      <Route exact path="foods/:id" component={ FoodsId } />
+      <Route exact path="drinks/:id" component={ DrinksId } />
+      <Route exact path="/foods/:id/in-progress" component={ FoodsInProgress } />
+      <Route exact path="/drinks/:id/in-progress" component={ DrinksInProgress } />
+      <Route exact path="/profile" component={ Profile } />
+      <Route exact path="/done-recipes" component={ DoneRecipes } />
+      <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default Routes;
