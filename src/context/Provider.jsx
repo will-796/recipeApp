@@ -9,11 +9,14 @@ const Provider = ({ children }) => {
     showProfile: false,
   });
   const [pageName, setPageName] = useState('');
+  const [showFooter, setShowFooter] = useState(false);
   const contextValue = {
     showHeader,
     setShowHeader,
     pageName,
     setPageName,
+    showFooter,
+    setShowFooter,
   };
 
   return <Context.Provider value={ contextValue }>{children}</Context.Provider>;
