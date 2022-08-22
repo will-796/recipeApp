@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Context from '../context';
 import SearchIcon from '../images/searchIcon.svg';
 import ProfileIcon from '../images/profileIcon.svg';
+import SearchBar from './SearchBar/SearchBar';
 
 function Header() {
   const { pageName,
@@ -9,6 +10,7 @@ function Header() {
   return (
     <div>
       <header>
+        <SearchBar />
         { showName && <h1 data-testid="page-title">{ pageName }</h1> }
         { showSearch && (
           <img src={ SearchIcon } alt="SearchIcon" data-testid="search-top-btn" />

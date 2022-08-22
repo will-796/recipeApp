@@ -6,9 +6,11 @@ import Drinks from '../pages/Drinks/Drinks';
 import Profile from '../pages/Profile/Profile';
 import DoneRecipes from '../pages/DoneRecipes/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
+import Header from '../components/Header';
 
 const Routes = () => (
   <BrowserRouter>
+    <Header />
     <Switch>
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Foods } />
