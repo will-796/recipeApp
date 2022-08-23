@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import Context from '../context';
-import drinkIcon from '../images/drinkIcon.svg';
-import mealIcon from '../images/mealIcon.svg';
+import { Link } from 'react-router-dom';
+import Context from '../../context';
+import drinkIcon from '../../images/drinkIcon.svg';
+import mealIcon from '../../images/mealIcon.svg';
 import './Footer.css';
 
 function Footer() {
@@ -11,16 +12,16 @@ function Footer() {
     <div>
       {showFooter && (
         <footer className="footer" data-testid="footer">
-          <a href="/drinks">
+          <Link to="/drinks">
             <img
               data-testid="drinks-bottom-btn"
               src={ drinkIcon }
               alt="drink icon"
             />
-          </a>
-          <a href="/foods">
+          </Link>
+          <Link to="/foods">
             <img data-testid="food-bottom-btn" src={ mealIcon } alt="meal icon" />
-          </a>
+          </Link>
         </footer>
       )}
     </div>
