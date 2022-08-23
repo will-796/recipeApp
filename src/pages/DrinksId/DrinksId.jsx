@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Context from '../../context';
 
-function Drinks() {
+function DrinksId() {
   const { setPageName, setShowHeader } = useContext(Context);
   useEffect(() => {
     setShowHeader({
@@ -17,4 +17,4 @@ function Drinks() {
   );
 }
 
-export default Drinks;
+export default DrinksId;
