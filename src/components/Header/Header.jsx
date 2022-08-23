@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Context from '../context';
-import SearchIcon from '../images/searchIcon.svg';
-import ProfileIcon from '../images/profileIcon.svg';
-import SearchBar from './SearchBar/SearchBar';
+import Context from '../../context';
+import SearchIcon from '../../images/searchIcon.svg';
+import ProfileIcon from '../../images/profileIcon.svg';
+import SearchBar from '../SearchBar/SearchBar';
 
 function Header() {
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -24,7 +24,6 @@ function Header() {
   return (
     <div>
       <header>
-        <SearchBar />
         { showName && <h1 data-testid="page-title">{ pageName }</h1> }
         { showSearch && (
           <button
@@ -35,7 +34,7 @@ function Header() {
           </button>
         )}
         { showSearchInput && (
-          <input data-testid="search-input" />
+          <SearchBar />
         )}
         { showProfile && (
           <button

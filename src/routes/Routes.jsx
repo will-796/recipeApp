@@ -6,11 +6,12 @@ import Drinks from '../pages/Drinks/Drinks';
 import Profile from '../pages/Profile/Profile';
 import DoneRecipes from '../pages/DoneRecipes/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import FoodsId from '../pages/FoodsId/FoodsId';
 import DrinksId from '../pages/DrinksId/DrinksId';
 import FoodsInProgress from '../pages/FoodsInProgress/FoodsInProgress';
 import DrinksInProgress from '../pages/DrinksInProgress/DrinksInProgress';
+import Footer from '../components/Footer/Footer';
 
 const Routes = () => (
   <BrowserRouter>
@@ -27,6 +28,7 @@ const Routes = () => (
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
     </Switch>
+    <Footer />
   </BrowserRouter>
 );
 

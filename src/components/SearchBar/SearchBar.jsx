@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import context from '../../context';
 
 const SearchBar = () => {
-  const { apiData, pageName, setApiData } = useContext(context);
+  const { pageName, setApiData } = useContext(context);
 
   const [radioValue, setRadioValue] = useState(null);
   const [inputValue, setInputValue] = useState('');
@@ -13,25 +13,19 @@ const SearchBar = () => {
   const fetchApi = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     if (data.meals === null || data.drinks === null) {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
     } else {
       setApiData(data);
+      if (pageName === 'Foods' && data.meals.length === 1) {
+        history.push(`/foods/${data.meals[0].idMeal}`);
+      }
+      if (pageName === 'Drinks' && data.drinks.length === 1) {
+        history.push(`/drinks/${data.drinks[0].idDrink}`);
+      }
     }
   };
-
-  const drinkControl = () => {
-    if (apiData.drinks.length === 1) {
-      history.push(`/drinks/${apiData.drinks[0].idDrink}`);
-    }
-  };
-
-  const foodControl = () => {
-    if (apiData.meals.length === 1) {
-      history.push(`/foods/${apiData.meals[0].idMeal}`);
-    }
-  };
+  console.log(pageName);
 
   const fetchFoods = () => {
     if (radioValue === 'ingredient') {
@@ -80,20 +74,10 @@ const SearchBar = () => {
   const handleChange = async () => {
     if (pageName === 'Foods') {
       fetchFoods();
-    }
-    if (pageName === 'Drinks') {
+    } else {
       fetchDrinks();
     }
   };
-
-  useEffect(() => {
-    if (pageName === 'Foods') {
-      foodControl();
-    }
-    if (pageName === 'Drinks') {
-      drinkControl();
-    }
-  }, [apiData]);
 
   return (
     <div>
