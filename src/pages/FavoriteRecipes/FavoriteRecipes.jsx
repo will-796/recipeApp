@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Context from '../../context';
 
 function FavoriteRecipes() {
-  const { setPageName, setShowHeader } = useContext(Context);
+  const { setShowFooter, setPageName, setShowHeader } = useContext(Context);
   useEffect(() => {
     setShowHeader({
       showName: true,
@@ -10,6 +10,7 @@ function FavoriteRecipes() {
       showProfile: true,
     });
     setPageName('Favorite Recipes');
+    setShowFooter(false);
   }, []);
 
   return (
