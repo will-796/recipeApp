@@ -22,11 +22,10 @@ function Profile() {
     localStorage.clear();
     history.push('/');
   };
-  // Ola
 
   return (
     <div>
-      <p data-testid="profile-email">{email.email}</p>
+      {email !== null && <p data-testid="profile-email">{email.email}</p>}
       <button
         onClick={ () => history.push('/done-recipes') }
         type="button"

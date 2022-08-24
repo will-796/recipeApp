@@ -15,6 +15,13 @@ describe('Testes da Tela de Login', () => {
     expect(submitButton).toBeEnabled();
   })
 
+  test('Não renderiza o Footer', () => {
+    render(<App />)
+
+    expect(screen.getAllByRole('footer')).toBeUndefined();
+  })
+
+
   test('Testar se o usuário é direcionado para a página de receitas', () => {
     render(<App />)
     const inputEmail = screen.getByTestId("email-input");
@@ -25,4 +32,5 @@ describe('Testes da Tela de Login', () => {
     const buttonLogin = screen.getByTestId("login-submit-btn")
     userEvent.click(buttonLogin)
   })
+
 })
