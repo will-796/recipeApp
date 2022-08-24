@@ -5,7 +5,8 @@ import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
 const FavoriteButton = ({ isFood, recipeData }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const callbackHof = (fav) => (isFood ? fav.id !== recipeData.idMeal : fav.id !== recipeData.idDrink);
+  const callbackHof = (fav) => (isFood ? fav.id !== recipeData.idMeal : fav.id
+    !== recipeData.idDrink);
   useEffect(() => {
     const favoriteArr = JSON.parse(
       localStorage.getItem('favoriteRecipes') || '[]',
