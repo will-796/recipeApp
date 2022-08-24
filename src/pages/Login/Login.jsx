@@ -4,7 +4,7 @@ import Context from '../../context';
 import './style.css';
 
 const Login = () => {
-  const { setShowHeader } = useContext(Context);
+  const { setShowFooter, setShowHeader } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isDisable, setIsDisable] = useState(false);
@@ -19,6 +19,7 @@ const Login = () => {
       showSearch: false,
       showProfile: false,
     });
+    setShowFooter(false);
   }, []);
 
   useEffect(() => {
