@@ -25,7 +25,6 @@ const SearchBar = () => {
       }
     }
   };
-  console.log(pageName);
 
   const fetchFoods = () => {
     if (radioValue === 'ingredient') {

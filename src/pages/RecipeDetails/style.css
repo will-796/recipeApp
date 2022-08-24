@@ -1,0 +1,13 @@
+.RecipeDetails button {
+  bottom: 0;
+  position: fixed;
+}
+
+.RecipeDetails .FavoriteButton {
+  position: static;
+}
+
+.RecipeDetails .ShareButton {
+  position: static;
+}
+

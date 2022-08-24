@@ -115,7 +115,6 @@ describe("Testes do componente SearchBar", () => {
 
   test("Testa se a barra de busca funciona na tela foods para nomes", async () => {
     const { history } = renderWithRouter(<App />);
-    console.log(history.location.pathname);
     const searchIcon = screen.getByRole("button", {
       name: /searchicon/i,
     });
