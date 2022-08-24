@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Context from '../../context';
 import { fetchFilter } from '../../services/api';
 import './Recipes.css';
@@ -27,7 +28,7 @@ function Recipes() {
   }, [apiDataCategory]);
 
   const firstRecipes = () => {
-    // console.log(apiData, 'apiData Slice');
+    console.log(apiData, 'apiData Slice');
     if (apiData.meals) {
       setRecipesResult(apiData.meals.slice(0, numberOfCards));
     }
@@ -43,24 +44,20 @@ function Recipes() {
 
   const handleCategoryFilter = async (category) => {
     let categoriesFilterResult = '';
-
     if (categoriesFilter !== category) {
       categoriesFilterResult = category;
     }
-
     setCategoriesFilter(categoriesFilterResult);
+
     if (!categoriesFilterResult.length || !category) {
       firstRecipes();
     } else {
       const response = await fetchFilter(pageName, categoriesFilterResult);
       if (response.meals) {
         setRecipesResult(response.meals.slice(0, numberOfCards));
-        // firstRecipesResult();
-        console.log(recipesResult);
         return;
       }
       setRecipesResult(response.drinks.slice(0, numberOfCards));
-      // firstRecipesResult();
     }
   };
 
@@ -91,20 +88,30 @@ function Recipes() {
       <h1>Recipes</h1>
       <div className="cards">
         {
-          recipesResult.length > 0 && recipesResult.map((elem, index) => (
-            <div key={ index } data-testid={ `${index}-recipe-card` }>
-              <img
+          recipesResult.length > 0 && recipesResult.map((recipe, index) => (
+            <Link
+              key={ index }
+              to={
+                recipe.strMeal ? `foods/${recipe.idMeal}` : `drinks/${recipe.idDrink}`
+              }
+            >
+              <div
                 width="230px"
-                data-testid={ `${index}-card-img` }
-                src={ elem.strMealThumb || elem.strDrinkThumb }
-                alt={ elem.strMeal || elem.strDrink }
-              />
-              <h3
-                data-testid={ `${index}-card-name` }
+                data-testid={ `${index}-recipe-card` }
               >
-                {elem.strMeal || elem.strDrink}
-              </h3>
-            </div>
+                <img
+                  width="230px"
+                  data-testid={ `${index}-card-img` }
+                  src={ recipe.strMealThumb || recipe.strDrinkThumb }
+                  alt={ recipe.strMeal || recipe.strDrink }
+                />
+                <h4
+                  data-testid={ `${index}-card-name` }
+                >
+                  {recipe.strMeal || recipe.strDrink}
+                </h4>
+              </div>
+            </Link>
           ))
         }
       </div>
