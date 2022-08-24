@@ -12,6 +12,7 @@ import DrinksId from '../pages/DrinksId/DrinksId';
 import FoodsInProgress from '../pages/FoodsInProgress/FoodsInProgress';
 import DrinksInProgress from '../pages/DrinksInProgress/DrinksInProgress';
 import Footer from '../components/Footer/Footer';
+// import RecipeInProgress from '../pages/RecipeInProgress/RecipeInProgress';
 
 const Routes = () => (
   <BrowserRouter>
