@@ -7,11 +7,12 @@ import Profile from '../pages/Profile/Profile';
 import DoneRecipes from '../pages/DoneRecipes/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
 import Header from '../components/Header/Header';
-import FoodsId from '../pages/FoodsId/FoodsId';
-import DrinksId from '../pages/DrinksId/DrinksId';
+// import FoodsId from '../pages/FoodsId/FoodsId';
+// import DrinksId from '../pages/DrinksId/DrinksId';
 import FoodsInProgress from '../pages/FoodsInProgress/FoodsInProgress';
 import DrinksInProgress from '../pages/DrinksInProgress/DrinksInProgress';
 import Footer from '../components/Footer/Footer';
+import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 
 const Routes = () => (
   <BrowserRouter>
@@ -20,10 +21,18 @@ const Routes = () => (
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Foods } />
       <Route exact path="/drinks" component={ Drinks } />
-      <Route exact path="foods/:id" component={ FoodsId } />
-      <Route exact path="drinks/:id" component={ DrinksId } />
+      <Route exact path="/foods/:id" render={ () => <RecipeDetails isFood /> } />
+      <Route
+        exact
+        path="/drinks/:id"
+        render={ () => <RecipeDetails isFood={ false } /> }
+      />
       <Route exact path="/foods/:id/in-progress" component={ FoodsInProgress } />
-      <Route exact path="/drinks/:id/in-progress" component={ DrinksInProgress } />
+      <Route
+        exact
+        path="/drinks/:id/in-progress"
+        component={ DrinksInProgress }
+      />
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
