@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
+import Recipes from '../../components/Recipes/Recipes';
 import Context from '../../context';
 
 function Drinks() {
   const { setShowFooter, setPageName, setShowHeader } = useContext(Context);
+
   useEffect(() => {
     setShowHeader({
       showName: true,
@@ -11,10 +13,11 @@ function Drinks() {
     });
     setPageName('Drinks');
     setShowFooter(true);
+    // eslint-disable-next-line
   }, []);
 
   return (
-    <div>To com sede</div>
+    <Recipes />
   );
 }
 

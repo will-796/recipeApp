@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
+import Recipes from '../../components/Recipes/Recipes';
 import Context from '../../context';
 
 function Foods() {
   const { setShowFooter, setPageName, setShowHeader } = useContext(Context);
+
   useEffect(() => {
     setShowHeader({
       showName: true,
@@ -11,10 +13,12 @@ function Foods() {
     });
     setShowFooter(true);
     setPageName('Foods');
+    // eslint-disable-next-line
   }, []);
 
   return (
-    <div>To com fome</div>);
+    <Recipes />
+  );
 }
 
 export default Foods;
