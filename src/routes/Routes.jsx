@@ -7,8 +7,6 @@ import Profile from '../pages/Profile/Profile';
 import DoneRecipes from '../pages/DoneRecipes/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
 import Header from '../components/Header/Header';
-import FoodsInProgress from '../pages/FoodsInProgress/FoodsInProgress';
-import DrinksInProgress from '../pages/DrinksInProgress/DrinksInProgress';
 import Footer from '../components/Footer/Footer';
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 
@@ -25,12 +23,12 @@ const Routes = () => (
         path="/drinks/:id"
         render={ () => <RecipeDetails isFood={ false } /> }
       />
-      <Route exact path="/foods/:id/in-progress" component={ FoodsInProgress } />
+      {/* <Route exact path="/foods/:id/in-progress" component={ FoodsInProgress } />
       <Route
         exact
         path="/drinks/:id/in-progress"
         component={ DrinksInProgress }
-      />
+      /> */}
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
