@@ -27,7 +27,6 @@ function Recipes() {
   }, [apiDataCategory]);
 
   const firstRecipes = () => {
-    // console.log(apiData, 'apiData Slice');
     if (apiData.meals) {
       setRecipesResult(apiData.meals.slice(0, numberOfCards));
     }
@@ -55,12 +54,9 @@ function Recipes() {
       const response = await fetchFilter(pageName, categoriesFilterResult);
       if (response.meals) {
         setRecipesResult(response.meals.slice(0, numberOfCards));
-        // firstRecipesResult();
-        console.log(recipesResult);
         return;
       }
       setRecipesResult(response.drinks.slice(0, numberOfCards));
-      // firstRecipesResult();
     }
   };
 

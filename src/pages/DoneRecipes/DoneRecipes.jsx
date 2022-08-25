@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import DoneRecipeCard from '../../components/DoneRecipeCard/DoneRecipeCard';
 import Context from '../../context';
-import ShareIcon from '../../images/shareIcon.svg';
 
 function DoneRecipes() {
   const { setShowFooter, setPageName, setShowHeader } = useContext(Context);
+  const [filter, setFilter] = useState('all');
+
   useEffect(() => {
     setShowHeader({
       showName: true,
@@ -14,23 +16,40 @@ function DoneRecipes() {
     setShowFooter(false);
   }, []);
 
+  const doneRecipesData = JSON.parse(
+    localStorage.getItem('doneRecipes') || '[]',
+  );
+
+  const filteredData = doneRecipesData.filter(
+    (recipe) => (filter === 'all' ? true : recipe.type === filter),
+  );
+
   return (
     <section>
-      <div>To com sede</div>
-      <button type="button" data-testid="filter-by-food-btn">Food</button>
-      <button type="button" data-testid="filter-by-drink-btn">Drinks</button>
-      <button type="button" data-testid="filter-by-all-btn">All</button>
-      <img src="" alt="" data-testid={ `${index}-horizontal-image` } />
-      <p data-testid={ `${index}-horizontal-top-text` }>Categoria</p>
-      <p data-testid={ `${index}-horizontal-name` }>Nome</p>
-      <p data-testid={ `${index}-horizontal-done-date` }>Data</p>
       <button
         type="button"
-        data-testid={ `${index}-horizontal-share-btn` }
+        data-testid="filter-by-food-btn"
+        onClick={ () => setFilter('food') }
       >
-        <img src={ ShareIcon } alt="ShareIcon" />
+        Food
       </button>
-      <div data-testid={ `${index}-${tagName}-horizontal-tag` }>Receita</div>
+      <button
+        type="button"
+        data-testid="filter-by-drink-btn"
+        onClick={ () => setFilter('drink') }
+      >
+        Drinks
+      </button>
+      <button
+        type="button"
+        data-testid="filter-by-all-btn"
+        onClick={ () => setFilter('all') }
+      >
+        All
+      </button>
+      {filteredData.map((recipe, index) => (
+        <DoneRecipeCard key={ recipe.id } index={ index } recipe={ recipe } />
+      ))}
     </section>
   );
 }
