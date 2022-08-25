@@ -11,8 +11,6 @@ const FavoriteButton = ({ isFood, recipeData }) => {
     const favoriteArr = JSON.parse(
       localStorage.getItem('favoriteRecipes') || '[]',
     );
-    console.log(favoriteArr);
-    console.log(recipeData);
     const favorite = favoriteArr.some((recipe) => {
       if (isFood) {
         return recipeData.idMeal === recipe.id;
