@@ -13,6 +13,7 @@ const Provider = ({ children }) => {
   const [showFooter, setShowFooter] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [apiDataCategory, setApiDataCategory] = useState();
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const getApiData = async (page) => {
     const response = await fetchData(page);
@@ -42,6 +43,8 @@ const Provider = ({ children }) => {
     setApiData,
     apiDataCategory,
     setApiDataCategory,
+    favoriteRecipes,
+    setFavoriteRecipes,
   };
 
   return <Context.Provider value={ contextValue }>{children}</Context.Provider>;
