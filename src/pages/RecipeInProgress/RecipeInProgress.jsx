@@ -8,10 +8,10 @@ import Context from '../../context';
 function RecipeInProgress({ isFood }) {
   const history = useHistory();
   const { id: recipeId } = useParams();
-  console.log(recipeId);
 
   const { recipeData, setRecipeData } = useContext(Context);
   const [ingredientsData, setIngredientsData] = useState({});
+  const [finishIsDisabled, setFinishIsDisabled] = useState(true);
 
   const handleRoute = () => {
     history.push('/done-recipes');
@@ -37,8 +37,13 @@ function RecipeInProgress({ isFood }) {
     }
     setIngredientsData(ingredients);
     localStorage.setItem('ingredients', JSON.stringify(ingredients));
-    console.log(ingredients, 'Local Storage response');
   };
+
+  useEffect(() => {
+    if (ingredientsData[recipeId]?.length > 0) {
+      setFinishIsDisabled(ingredientsData[recipeId]?.length !== ingredientsKeys.length);
+    }
+  }, [ingredientsData, ingredientsKeys]);
 
   useEffect(() => {
     const ingredients = JSON.parse(localStorage.getItem('ingredients')) || [];
@@ -52,7 +57,6 @@ function RecipeInProgress({ isFood }) {
         : `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipeId}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
       setRecipeData(isFood ? data.meals[0] : data.drinks[0]);
     };
     fetchApi();
@@ -110,6 +114,7 @@ function RecipeInProgress({ isFood }) {
       </fieldset>
       <p data-testid="instructions">{recipeData.strInstructions}</p>
       <button
+        disabled={ finishIsDisabled }
         type="button"
         data-testid="finish-recipe-btn"
         onClick={ handleRoute }
