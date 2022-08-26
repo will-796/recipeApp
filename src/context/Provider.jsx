@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Context from './index';
 import { fetchData } from '../services/api';
 
-const Provider = ({ children }) => {
+const Provider = ({ children, pageNameProp }) => {
   const [showHeader, setShowHeader] = useState({
     showName: false,
     showSearch: false,
     showProfile: false,
   });
-  const [pageName, setPageName] = useState('');
+  const [pageName, setPageName] = useState(pageNameProp);
   const [showFooter, setShowFooter] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [apiDataCategory, setApiDataCategory] = useState();
@@ -52,9 +52,14 @@ const Provider = ({ children }) => {
 
 Provider.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
+  pageNameProp: PropTypes.string,
+};
+
+Provider.defaultProps = {
+  pageNameProp: 'Foods',
 };
 
 export default Provider;
