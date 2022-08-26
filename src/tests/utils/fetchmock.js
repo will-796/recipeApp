@@ -124,6 +124,12 @@ const fetchMock = (url) => Promise.resolve({
     if (url === 'https://www.themealdb.com/api/json/v1/1/search.php?s=')
       return Promise.resolve(meals);
 
+    if (url === 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=ll')
+      return Promise.resolve(drinks);
+
+    if (url === 'https://www.themealdb.com/api/json/v1/1/search.php?f=aa')
+      return Promise.resolve(meals);
+
     return Promise.reject(new Error('Invalid url'));
   },
 });
