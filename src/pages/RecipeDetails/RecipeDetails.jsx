@@ -46,7 +46,7 @@ const RecipeDetails = ({ isFood }) => {
   return (
     <div className="RecipeDetails">
       <FavoriteButton isFood={ isFood } recipeData={ recipeData } />
-      <ShareButton />
+      <ShareButton isFood={ isFood } id={ id } />
       {isFood ? (
         <DetailsFood
           recipeData={ recipeData }

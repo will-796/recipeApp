@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
+import ShareButton from '../../components/ShareButton/ShareButton';
 import Context from '../../context';
 
 function RecipeInProgress({ isFood }) {
   const history = useHistory();
   const { id: recipeId } = useParams();
+  console.log(recipeId);
 
   const { recipeData, setRecipeData } = useContext(Context);
   const [ingredientsData, setIngredientsData] = useState({});
@@ -38,7 +41,7 @@ function RecipeInProgress({ isFood }) {
   };
 
   useEffect(() => {
-    const ingredients = JSON.parse(localStorage.getItem('ingredients'));
+    const ingredients = JSON.parse(localStorage.getItem('ingredients')) || [];
     setIngredientsData(ingredients);
   }, []);
 
@@ -49,6 +52,7 @@ function RecipeInProgress({ isFood }) {
         : `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipeId}`;
       const response = await fetch(url);
       const data = await response.json();
+      console.log(data);
       setRecipeData(isFood ? data.meals[0] : data.drinks[0]);
     };
     fetchApi();
@@ -68,9 +72,9 @@ function RecipeInProgress({ isFood }) {
         alt=""
       />
       <h2 data-testid="recipe-title">{recipeData.strDrink || recipeData.strMeal}</h2>
-      <button type="button" data-testid="share-btn">Compartilhar</button>
-      <button type="button" data-testid="favorite-btn">Favoritos</button>
       <h3 data-testid="recipe-category">{recipeData.strCategory}</h3>
+      <FavoriteButton recipeData={ recipeData } isFood={ isFood } />
+      <ShareButton isFood={ isFood } id={ recipeId } />
       <fieldset>
         <legend>Passos da Receita</legend>
         { ingredientsKeys.map((key, index) => (
@@ -79,14 +83,25 @@ function RecipeInProgress({ isFood }) {
               data-testid={ `${index}-ingredient-step` }
               htmlFor={ ingredientName(index) }
             >
-              <input
-                checked={ ingredientsData[recipeId]
-                  ?.some((ingredient) => ingredient === ingredientName(index)) }
-                type="checkbox"
-                id={ ingredientName(index) }
-                name={ ingredientName(index) }
-                onChange={ handleChange }
-              />
+              {!ingredientsData[recipeId] ? (
+                <input
+                  checked={ false }
+                  type="checkbox"
+                  id={ ingredientName(index) }
+                  name={ ingredientName(index) }
+                  onChange={ handleChange }
+                />
+              ) : (
+                <input
+                  checked={ ingredientsData[recipeId]
+                    ?.some((ingredient) => ingredient === ingredientName(index)) }
+                  type="checkbox"
+                  id={ ingredientName(index) }
+                  name={ ingredientName(index) }
+                  onChange={ handleChange }
+                />
+
+              )}
               {`${recipeData[`strIngredient${index + 1}`]} - 
             ${recipeData[`strMeasure${index + 1}`]}`}
             </label>

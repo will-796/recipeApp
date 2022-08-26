@@ -1,15 +1,14 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import shareIcon from '../../images/shareIcon.svg';
 
 const copy = require('clipboard-copy');
 
-const ShareButton = () => {
+const ShareButton = ({ isFood, id }) => {
   const [isCopied, setIsCopied] = useState(false);
-  const history = useHistory();
   const handleClick = () => {
-    const strCopy = history.location.pathname;
-    copy(`http://localhost:3000${strCopy}`);
+    const endPoint = isFood ? `foods/${id}` : `drinks/${id}`;
+    copy(`http://localhost:3000/${endPoint}`);
     setIsCopied(true);
     global.alert('Link copied!');
   };
@@ -23,6 +22,11 @@ const ShareButton = () => {
       {isCopied ? 'Link copied!' : <img src={ shareIcon } alt="ShareButton" />}
     </button>
   );
+};
+
+ShareButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  isFood: PropTypes.bool.isRequired,
 };
 
 export default ShareButton;
