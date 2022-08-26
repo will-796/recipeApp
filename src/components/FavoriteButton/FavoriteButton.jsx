@@ -11,9 +11,14 @@ const FavoriteButton = ({ isFood, recipeData }) => {
     const favoriteArr = JSON.parse(
       localStorage.getItem('favoriteRecipes') || '[]',
     );
-    const favorite = favoriteArr.some(callbackHof);
+    const favorite = favoriteArr.some((recipe) => {
+      if (isFood) {
+        return recipeData.idMeal === recipe.id;
+      }
+      return recipeData.idDrink === recipe.id;
+    });
     setIsFavorite(favorite);
-  }, []);
+  }, [recipeData]);
 
   const handleClick = () => {
     const favoriteArr = JSON.parse(

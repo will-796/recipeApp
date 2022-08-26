@@ -13,6 +13,7 @@ const Provider = ({ children }) => {
   const [showFooter, setShowFooter] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [apiDataCategory, setApiDataCategory] = useState();
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [recipeData, setRecipeData] = useState({});
 
   const getApiData = async (page) => {
@@ -43,6 +44,8 @@ const Provider = ({ children }) => {
     setApiData,
     apiDataCategory,
     setApiDataCategory,
+    favoriteRecipes,
+    setFavoriteRecipes,
     recipeData,
     setRecipeData,
   };

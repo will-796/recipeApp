@@ -28,7 +28,6 @@ function Recipes() {
   }, [apiDataCategory]);
 
   const firstRecipes = () => {
-    // console.log(apiData, 'apiData Slice');
     if (apiData.meals) {
       setRecipesResult(apiData.meals.slice(0, numberOfCards));
     }
