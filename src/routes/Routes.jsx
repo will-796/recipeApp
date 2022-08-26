@@ -9,6 +9,7 @@ import FavoriteRecipes from '../pages/FavoriteRecipes/FavoriteRecipes';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
+import RecipeInProgress from '../pages/RecipeInProgress/RecipeInProgress';
 
 const Routes = () => (
   <BrowserRouter>
@@ -23,12 +24,16 @@ const Routes = () => (
         path="/drinks/:id"
         render={ () => <RecipeDetails isFood={ false } /> }
       />
-      {/* <Route exact path="/foods/:id/in-progress" component={ FoodsInProgress } />
+      <Route
+        exact
+        path="/foods/:id/in-progress"
+        render={ () => <RecipeInProgress isFood /> }
+      />
       <Route
         exact
         path="/drinks/:id/in-progress"
-        component={ DrinksInProgress }
-      /> */}
+        component={ RecipeInProgress }
+      />
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />

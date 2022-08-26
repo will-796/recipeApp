@@ -67,7 +67,7 @@ const DetailsFood = ({ recipeData, recommendations }) => {
         <button
           type="button"
           data-testid="start-recipe-btn"
-          onClick={ () => history.push(`/foods/${recipeData.idMeal}/in-progress`) }
+          onClick={ () => { history.push(`/foods/${recipeData.idMeal}/in-progress`); } }
         >
           {recipeInProgress ? 'Continue Recipe' : 'Start Recipe'}
         </button>

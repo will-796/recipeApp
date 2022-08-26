@@ -10,16 +10,17 @@ import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import ShareButton from '../../components/ShareButton/ShareButton';
 
 const RecipeDetails = ({ isFood }) => {
-  const { setShowHeader } = useContext(context);
-  const [recipeData, setRecipeData] = useState({});
+  const { setShowHeader, setRecipeData, recipeData } = useContext(context);
   const [recommendations, setRecommendations] = useState([]);
   const { id } = useParams();
+
   useEffect(() => {
     setShowHeader({
       showName: false,
       showSearch: false,
       showProfile: false,
     });
+
     const fetchApi = async () => {
       const url = isFood
         ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -28,7 +29,9 @@ const RecipeDetails = ({ isFood }) => {
       const data = await response.json();
       setRecipeData(isFood ? data.meals[0] : data.drinks[0]);
     };
+
     fetchApi();
+
     const fetchApiRecommendations = async () => {
       const url = isFood
         ? 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
@@ -39,6 +42,7 @@ const RecipeDetails = ({ isFood }) => {
     };
     fetchApiRecommendations();
   }, [id]);
+
   return (
     <div className="RecipeDetails">
       <FavoriteButton isFood={ isFood } recipeData={ recipeData } />
