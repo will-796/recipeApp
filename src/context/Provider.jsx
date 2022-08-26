@@ -14,6 +14,7 @@ const Provider = ({ children, pageNameProp }) => {
   const [apiData, setApiData] = useState([]);
   const [apiDataCategory, setApiDataCategory] = useState();
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [recipeData, setRecipeData] = useState({});
 
   const getApiData = async (page) => {
     const response = await fetchData(page);
@@ -45,6 +46,8 @@ const Provider = ({ children, pageNameProp }) => {
     setApiDataCategory,
     favoriteRecipes,
     setFavoriteRecipes,
+    recipeData,
+    setRecipeData,
   };
 
   return <Context.Provider value={ contextValue }>{children}</Context.Provider>;
