@@ -19,6 +19,7 @@ const DetailsFood = ({ recipeData, recommendations }) => {
   return (
     <div>
       <img
+        width="100%"
         src={ recipeData.strMealThumb }
         alt={ recipeData.strMeal }
         data-testid="recipe-photo"
@@ -53,6 +54,7 @@ const DetailsFood = ({ recipeData, recommendations }) => {
               onClick={ () => history.push(`/drinks/${recommendation.idDrink}`) }
             >
               <img
+                width="100%"
                 src={ recommendation.strDrinkThumb }
                 alt={ recommendation.strDrink }
                 data-testid="recipe-photo"

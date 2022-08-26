@@ -23,8 +23,7 @@ function RecipeInProgress({ isFood }) {
 
     if (ingredients[recipeId]) {
       if (ingredients[recipeId].some((ingredient) => ingredient === name)) {
-        let ingredientsFilter = '';
-        ingredientsFilter = ingredients[recipeId]
+        const ingredientsFilter = ingredients[recipeId]
           .filter((ingredient) => ingredient !== name);
         ingredients = { ...ingredients, [recipeId]: ingredientsFilter };
       } else {
@@ -40,7 +39,6 @@ function RecipeInProgress({ isFood }) {
 
   useEffect(() => {
     const ingredients = JSON.parse(localStorage.getItem('ingredients'));
-    console.log(ingredients);
     setIngredientsData(ingredients);
   }, []);
 
@@ -59,14 +57,13 @@ function RecipeInProgress({ isFood }) {
   const ingredientName = (index) => recipeData[`strIngredient${index + 1}`];
 
   return (
-    recipeData
-    && <section>
+    <section>
       <h1>
         Receitas em progresso
       </h1>
       <img
         data-testid="recipe-photo"
-        width="200px"
+        width="100%"
         src={ recipeData.strDrinkThumb || recipeData.strMealThumb }
         alt=""
       />
@@ -104,7 +101,7 @@ function RecipeInProgress({ isFood }) {
       >
         Finish Recipes
       </button>
-       </section>
+    </section>
   );
 }
 
