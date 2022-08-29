@@ -35,6 +35,11 @@ beforeAll(() => {
   Object.defineProperty(window, 'localStorage', {
     value: localStorageMock(),
   });
+  Object.defineProperty(navigator, "clipboard", {
+    value: {
+      writeText: () => {},
+    },
+  });
 });
 
 describe('Testes da pagina doneRecipes', () => {
@@ -57,6 +62,7 @@ describe('Testes da pagina doneRecipes', () => {
     })
     expect(foodImage).toBeInTheDocument()
     expect(drinkImage).toBeInTheDocument()
+    userEvent.click(screen.getByTestId('0-horizontal-share-btn'))
     const btnFood =  screen.getByTestId('filter-by-food-btn')
     const btnDrink = screen.getByTestId('filter-by-drink-btn')
     const btnAll = screen.getByTestId('filter-by-all-btn')
