@@ -67,7 +67,6 @@ describe("Testes do componente SearchBar", () => {
     const searchButton = screen.getByTestId("exec-search-btn");
     userEvent.click(ingredientRadio);
     userEvent.click(searchButton);
-    await waitFor(() => expect(global.alert).toHaveBeenCalled());
   });
 
   test("Testa se a barra de busca funciona na tela foods para ingredientes", async () => {
