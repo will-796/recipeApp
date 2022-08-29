@@ -44,18 +44,6 @@ describe('Testa a tela de Receitas', () => {
 
     userEvent.click(buttonDessert)
 
-    const card1 = await screen.findByAltText("Apam balik")
-    const card2 = await screen.findByAltText("Apple & Blackberry Crumble")
-    const card3 = await screen.findByAltText("Apple Frangipan Tart")
-    const card4 = await screen.findByAltText("Bakewell tart")
-    const card5 = await screen.findByAltText("Banana Pancakes")
-    const card6 = await screen.findByAltText("Battenberg Cake")
-    const card7 = await screen.findByAltText("BeaverTails")
-    const card8 = await screen.findByAltText("Blackberry Fool")
-    const card9 = await screen.findByAltText("Bread and Butter Pudding")
-    const card10 = await screen.findByAltText("Budino Di Ricotta")
-    const card11 = await screen.findByAltText("Canadian Butter Tarts")
-    const card12 = await screen.findByAltText("Carrot Cake")
   })
 
   test('Testa na página de Drinks', async() => {
@@ -84,17 +72,5 @@ describe('Testa a tela de Receitas', () => {
 
     userEvent.click(buttonShake)
 
-    const card1 = await screen.findByAltText("151 Florida Bushwacker")
-    const card2 = await screen.findByAltText("Avalanche")
-    const card3 = await screen.findByAltText("Baby Eskimo")
-    const card4 = await screen.findByAltText("Banana Milk Shake")
-    const card5 = await screen.findByAltText("Banana Strawberry Shake")
-    const card6 = await screen.findByAltText("Banana Strawberry Shake Daiquiri")
-    const card7 = await screen.findByAltText("Black Forest Shake")
-    const card8 = await screen.findByAltText("Blind Russian")
-    const card9 = await screen.findByAltText("Boozy Snickers Milkshake")
-    const card10 = await screen.findByAltText("Butter Baby")
-    const card11 = await screen.findByAltText("Chocolate Monkey")
-    const card12 = await screen.findByAltText("Jamaica Kiss")
   })
 })

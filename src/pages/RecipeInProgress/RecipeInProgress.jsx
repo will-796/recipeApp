@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 import ShareButton from '../../components/ShareButton/ShareButton';
-import Context from '../../context';
 
 function RecipeInProgress({ isFood }) {
   const history = useHistory();
   const { id: recipeId } = useParams();
 
-  const { recipeData, setRecipeData } = useContext(Context);
+  const [recipeData, setRecipeData] = useState({});
   const [ingredientsData, setIngredientsData] = useState({});
   const [finishIsDisabled, setFinishIsDisabled] = useState(true);
 
@@ -48,9 +47,6 @@ function RecipeInProgress({ isFood }) {
   useEffect(() => {
     const ingredients = JSON.parse(localStorage.getItem('ingredients')) || [];
     setIngredientsData(ingredients);
-  }, []);
-
-  useEffect(() => {
     const fetchApi = async () => {
       const url = isFood
         ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
@@ -60,7 +56,7 @@ function RecipeInProgress({ isFood }) {
       setRecipeData(isFood ? data.meals[0] : data.drinks[0]);
     };
     fetchApi();
-  }, [recipeId]);
+  }, []);
 
   const ingredientName = (index) => recipeData[`strIngredient${index + 1}`];
 
