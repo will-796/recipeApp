@@ -13,6 +13,11 @@ beforeAll(() => {
   Object.defineProperty(window, "localStorage", {
     value: localStorageMock(),
   });
+  Object.defineProperty(navigator, "clipboard", {
+    value: {
+      writeText: () => {},
+    },
+  });
 });
 
 describe("Testa a tela de Receitas", () => {
@@ -48,6 +53,7 @@ describe("Testa a tela de Receitas", () => {
     const favoriteButton = await screen.findByTestId("favorite-btn");
     expect(favoriteButton).toBeInTheDocument();
     userEvent.click(favoriteButton);
+    userEvent.click(screen.getByTestId('share-btn'))
 
     const blackHeartIcon = await screen.findByAltText("blackHeartIcon");
     expect(blackHeartIcon).toBeInTheDocument();

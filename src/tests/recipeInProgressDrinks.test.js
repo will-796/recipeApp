@@ -18,7 +18,6 @@ beforeAll(() => {
 });
 
 describe("Testa a tela de Receitas", () => {
-  window.localStorage.clear()
   test("Testa se renderiza o botão de favoritos em Foods", async () => {
     renderWithRouter(<App />);
     const email = screen.getByTestId("email-input");
@@ -66,13 +65,13 @@ describe("Testa a tela de Receitas", () => {
       await screen.findByRole("heading", { name: /lemon drop/i })
     ).toBeInTheDocument();
 
-    const firstCheckboxIngredient = await screen.findByTestId(
+    const firstCheckboxIngredient = screen.getByTestId(
       "0-ingredient-step"
     );
-    const secondCheckboxIngredient = await screen.findByTestId(
+    const secondCheckboxIngredient = screen.getByTestId(
       "1-ingredient-step"
     );
-    const thirdCheckboxIngredient = await screen.findByTestId(
+    const thirdCheckboxIngredient = screen.getByTestId(
       "2-ingredient-step"
     );
     userEvent.click(firstCheckboxIngredient);
