@@ -52,7 +52,7 @@ function RecipeInProgress({ isFood }) {
         ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
         : `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${recipeId}`;
       const response = await fetch(url);
-      const data = await response.json();
+      const data = await response?.json();
       setRecipeData(isFood ? data.meals[0] : data.drinks[0]);
     };
     fetchApi();

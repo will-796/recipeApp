@@ -84,11 +84,4 @@ describe("Testa a tela de Receitas", () => {
     const finishRecipe = await screen.findByTestId("finish-recipe-btn");
     userEvent.click(finishRecipe);
   });
-  test("Testa se renderiza o botão de favoritos em Foods", async () => {
-    renderWithRouter(
-      <Provider>
-        <RecipeInProgress />
-      </Provider>
-    );
-  });
 });
