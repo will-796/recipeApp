@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import FavoriteRecipeCard from '../../components/FavoriteRecipeCard/FavoriteRecipeCard';
 import Context from '../../context';
+import './style.css';
 
 function FavoriteRecipes() {
   const {
@@ -30,31 +31,36 @@ function FavoriteRecipes() {
   );
 
   return (
-    <section>
-      <button
-        type="button"
-        data-testid="filter-by-food-btn"
-        onClick={ () => setFilter('food') }
-      >
-        Food
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ () => setFilter('drink') }
-      >
-        Drinks
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ () => setFilter('all') }
-      >
-        All
-      </button>
-      {filteredData.map((recipe, index) => (
-        <FavoriteRecipeCard key={ index } index={ index } recipe={ recipe } />
-      ))}
+    <section className="FavoriteRecipe">
+      <div className="filterContainer">
+        <button
+          type="button"
+          className="filter-food"
+          data-testid="filter-by-food-btn"
+          onClick={ () => setFilter('food') }
+        >
+          Food
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-drink-btn"
+          onClick={ () => setFilter('drink') }
+        >
+          Drinks
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-all-btn"
+          onClick={ () => setFilter('all') }
+        >
+          All
+        </button>
+      </div>
+      <div className="favCardsContainer">
+        {filteredData.map((recipe, index) => (
+          <FavoriteRecipeCard key={ index } index={ index } recipe={ recipe } />
+        ))}
+      </div>
     </section>
   );
 }
