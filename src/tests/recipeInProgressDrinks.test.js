@@ -6,6 +6,8 @@ import App from "../App";
 import RecipeInProgress from "../pages/RecipeInProgress/RecipeInProgress";
 import Provider from "../context/Provider";
 import localStorageMock from "./utils/localStorageMock";
+import fetchMock from "./utils/fetchmock";
+import oneDrink from "./mocks/oneDrink";
 
 const ingredients = {
   53014: ["Water", "Sugar"],
@@ -20,10 +22,15 @@ beforeAll(() => {
 describe("Testa a tela de Receitas", () => {
   window.localStorage.clear()
   test("Testa se renderiza o botão de favoritos em Foods", async () => {
+    jest.fn(() => Promise.resolve({
+      status: 200,
+      ok: true,
+      json: () => Promise.resolve(oneDrink)
+    }))
     renderWithRouter(<App />);
     const email = screen.getByTestId("email-input");
     const senha = screen.getByTestId("password-input");
-
+    
     const EMAIL_USER = "testes@testando.com";
     const SENHA_USER = "1234567";
 
@@ -41,7 +48,7 @@ describe("Testa a tela de Receitas", () => {
     userEvent.click(iconSearch);
 
     const searchInput = await screen.findByTestId("search-input");
-    userEvent.type(searchInput, "lemon drop");
+    userEvent.type(searchInput, "Aquamarine");
 
     const nameInputRadio = await screen.findByTestId("name-search-radio");
     userEvent.type(nameInputRadio);
@@ -63,7 +70,7 @@ describe("Testa a tela de Receitas", () => {
     userEvent.click(startButton);
 
     expect(
-      await screen.findByRole("heading", { name: /lemon drop/i })
+      await screen.findByRole("heading", { name: /Aquamarine/i })
     ).toBeInTheDocument();
 
     const firstCheckboxIngredient = await screen.findByTestId(
@@ -83,12 +90,5 @@ describe("Testa a tela de Receitas", () => {
 
     const finishRecipe = await screen.findByTestId("finish-recipe-btn");
     userEvent.click(finishRecipe);
-  });
-  test("Testa se renderiza o botão de favoritos em Foods", async () => {
-    renderWithRouter(
-      <Provider>
-        <RecipeInProgress />
-      </Provider>
-    );
   });
 });
