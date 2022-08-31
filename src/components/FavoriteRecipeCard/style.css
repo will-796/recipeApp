@@ -1,0 +1,52 @@
+.FavoriteRecipeCard {
+  align-items: center;
+  background-color: var(--secondary-background-color);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.FavoriteRecipeCard .imgFavCard {
+  border: none;
+}
+
+.FavoriteRecipeCard .imgFavCard img {
+  height: 143px;
+  width: 147px;
+}
+
+.FavoriteRecipeCard .containerInfoFavCard {
+  align-items: center;
+  border: none;
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.FavoriteRecipeCard .favCardNameDescribe {
+  text-align: center;
+  width: 60%;
+}
+
+.FavoriteRecipeCard .favCardNameDescribe button {
+  font-size: 20px;
+}
+
+.FavoriteRecipeCard .containerInfoFavCard button {
+  background-color: inherit;
+  border: none;
+
+}
+
+.FavoriteRecipeCard .favCardButtons {
+  align-self: flex-start;
+  display: flex;
+  gap: 5px;
+}
+
+
+.FavoriteRecipeCard .favCardButtons button img {
+  height: 23px;
+  width: 26px;
+}

@@ -1,0 +1,71 @@
+.DoneRecipeCard {
+  background-color: var(--secondary-background-color);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.DoneRecipeCard .imgDoneCard {
+  border: none;
+}
+
+.DoneRecipeCard .imgDoneCard img {
+  height: 143px;
+  width: 147px;
+}
+
+.DoneRecipeCard .containerInfoDoneCard {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.DoneRecipeCard .doneCardNameDescribe {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.DoneRecipeCard .doneCardNameDescribe button {
+  font-size: 20px;
+  text-align: start;
+
+}
+
+.DoneRecipeCard .containerInfoDoneCard button {
+  background-color: inherit;
+  border: none;
+
+}
+
+.DoneRecipeCard .doneCardButtons {
+  align-self: flex-start;
+  display: flex;
+  gap: 5px;
+}
+
+
+.DoneRecipeCard .DoneCardButtons button img {
+  height: 23px;
+  width: 26px;
+}
+
+.DoneRecipeCard .tagContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.DoneRecipeCard .doneCardTop {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.DoneRecipeCard .doneCardTop button {
+  align-self: flex-start;
+}

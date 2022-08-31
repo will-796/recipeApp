@@ -1,9 +1,9 @@
-.FavoriteRecipe {
+.DoneRecipes {
   display: flex;
   flex-direction: column;
 }
 
-.FavoriteRecipe .favCardsContainer {
+.DoneRecipes .doneCardsContainer {
   display: flex;
   flex-direction: column;
   gap: 13px;
@@ -11,7 +11,7 @@
 }
 
 
-.FavoriteRecipe .filterContainer {
+.DoneRecipes .filterContainer {
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
@@ -19,7 +19,7 @@
   justify-content: center;
 }
 
-.FavoriteRecipe .filterContainer button {
+.DoneRecipes .filterContainer button {
   background: var(--secondary-background-color);
   border: none;
   border-radius: 5px;

@@ -3,6 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import FavBtnPage from '../FavBtnPage/FavBtnPage';
 import ShareBtnDoneRecipes from '../ShareBtnDoneRecipes/ShareBtnDoneRecipes';
+import './style.css';
 
 const FavoriteRecipeCard = ({ recipe, index }) => {
   const history = useHistory();
@@ -22,8 +23,8 @@ const FavoriteRecipeCard = ({ recipe, index }) => {
   };
 
   return (
-    <div>
-      <button type="button" onClick={ redirectRecipe }>
+    <div className="FavoriteRecipeCard">
+      <button type="button" onClick={ redirectRecipe } className="imgFavCard">
         <img
           src={ image }
           alt={ name }
@@ -31,18 +32,25 @@ const FavoriteRecipeCard = ({ recipe, index }) => {
           width="100"
         />
       </button>
-      <p data-testid={ `${index}-horizontal-top-text` }>
-        {isFood ? `${nationality} - ${category}` : alcoholicOrNot}
-      </p>
-      <button
-        type="button"
-        data-testid={ `${index}-horizontal-name` }
-        onClick={ redirectRecipe }
-      >
-        {name}
-      </button>
-      <ShareBtnDoneRecipes index={ index } id={ id } isFood={ isFood } />
-      <FavBtnPage id={ recipe.id } index={ index } />
+      <div className="containerInfoFavCard">
+        <div className="favCardNameDescribe">
+          <button
+            type="button"
+            data-testid={ `${index}-horizontal-name` }
+            onClick={ redirectRecipe }
+            className="font-Great-Vibes"
+          >
+            {name}
+          </button>
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            {isFood ? `${nationality} - ${category}` : alcoholicOrNot}
+          </p>
+        </div>
+        <div className="favCardButtons">
+          <ShareBtnDoneRecipes index={ index } id={ id } isFood={ isFood } />
+          <FavBtnPage id={ recipe.id } index={ index } />
+        </div>
+      </div>
 
     </div>
   );

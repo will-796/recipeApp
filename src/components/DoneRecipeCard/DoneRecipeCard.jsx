@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import ShareBtnDoneRecipes from '../ShareBtnDoneRecipes/ShareBtnDoneRecipes';
+import './style.css';
 
 const DoneRecipeCard = ({ recipe, index }) => {
   const history = useHistory();
@@ -22,8 +23,8 @@ const DoneRecipeCard = ({ recipe, index }) => {
     history.push(pathRedirect);
   };
   return (
-    <div>
-      <button type="button" onClick={ redirectRecipe }>
+    <div className="DoneRecipeCard">
+      <button type="button" onClick={ redirectRecipe } className="imgDoneCard">
         <img
           src={ image }
           alt={ name }
@@ -31,23 +32,32 @@ const DoneRecipeCard = ({ recipe, index }) => {
           width="100"
         />
       </button>
-      <p data-testid={ `${index}-horizontal-top-text` }>
-        {isFood ? `${nationality} - ${category}` : alcoholicOrNot}
-      </p>
-      <button
-        type="button"
-        data-testid={ `${index}-horizontal-name` }
-        onClick={ redirectRecipe }
-      >
-        {name}
-      </button>
-      <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
-      <ShareBtnDoneRecipes index={ index } id={ id } isFood={ isFood } />
-      {tags.map((tag, key) => (
-        <div key={ key } data-testid={ `${index}-${tag}-horizontal-tag` }>
-          {tag}
+      <div className="containerInfoDoneCard">
+        <div className="doneCardTop">
+          <div className="doneCardNameDescribe">
+            <button
+              type="button"
+              data-testid={ `${index}-horizontal-name` }
+              onClick={ redirectRecipe }
+              className="font-Great-Vibes"
+            >
+              {name}
+            </button>
+            <p data-testid={ `${index}-horizontal-top-text` }>
+              {isFood ? `${nationality} - ${category}` : alcoholicOrNot}
+            </p>
+          </div>
+          <ShareBtnDoneRecipes index={ index } id={ id } isFood={ isFood } />
         </div>
-      ))}
+        <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
+        <div className="tagContainer">
+          {tags.map((tag, key) => (
+            <div key={ key } data-testid={ `${index}-${tag}-horizontal-tag` }>
+              {tag}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
